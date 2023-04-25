@@ -2,7 +2,7 @@ import CMS from "@staticcms/core";
 import React from "react";
 import "@staticcms/core/dist/main.css";
 
-const URLRegex = '^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$'
+const URLRegex = '^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$'
 const URLPattern: [string, string] = [
     URLRegex,
   'Must be a URL.'
