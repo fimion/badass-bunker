@@ -13,10 +13,23 @@ Please fill out the following list of items and we'll review your submission!
 
 ```markdown
 ---
-title: Title of Homebrew Project
-creatorName: The name/tag of the Homebrew creator
-creatorUrl: URL for the creator
-resourceUrl: URL to the Homebrew content
+# Title of Homebrew Project
+title: 
+# The name/tag of the Homebrew creator
+creatorName: 
+# URL for the creator (optional)
+creatorUrl: 
+# URL to the Homebrew content
+resourceUrl: 
+# URL for preview image (optional)
+img: 
+# description of preview image (optional only if no img)
+img_alt: 
+# Hex code color 1 for background fallback for cards (optional)
+color1: 
+# Hex code color 2 for background fallback for cards (optional)
+color2: 
+
 
 ---
 <!-- Fill out a description to display with the item here! let people know what it is about! -->

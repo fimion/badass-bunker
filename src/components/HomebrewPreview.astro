@@ -6,19 +6,26 @@ interface Props {
 }
 
 const { data, slug } = Astro.props.resource;
+
+const color1 = data.color1 || 'var(--gray-900)';
+const color2 = data.color2 || 'var(--gray-999)';
+const colors = `--color-1:${color1};--color-2:${color2}`;
 ---
 
-<a class="card" href={`/homebrew/${slug}`}>
-	<span class="title">{data.title}</span>
-	<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />
+<a class="card" href={`/homebrew/${slug}`} style={colors}>
+	<span class="title">{data.title} by {data.creatorName}</span>
+	{data.img && <img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />}
 </a>
 
 <style>
 	.card {
+		--color-1: var(--gray-900);
+		--color-2: var(--gray-999);
+		--bg-image: linear-gradient(150deg, var(--color-1) 19%, var(--color-2) 150%);
 		display: grid;
 		grid-template: auto 1fr / auto 1fr;
 		height: 11rem;
-		background: var(--gradient-subtle);
+		background: var(--bg-image);
 		border: 1px solid var(--gray-800);
 		border-radius: 0.75rem;
 		overflow: hidden;
