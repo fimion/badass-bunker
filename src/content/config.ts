@@ -21,12 +21,12 @@ export const collections = {
 			description: z.string(),
 			publishDate: z.coerce.date(),
 			creatorName: z.string(),
-			creatorUrl: z.string().url().nullable(),
+			creatorUrl: z.string().url().nullable().optional(),
 			resourceUrl: z.string().url(),
-			img: z.string().url().nullable(),
-			img_alt: z.string().nullable(),
-			color1: ZodColor.nullable(),
-			color2: ZodColor.nullable(),
+			img: z.string().url().nullable().optional(),
+			img_alt: z.string().nullable().optional(),
+			color1: ZodColor.nullable().optional(),
+			color2: ZodColor.nullable().optional(),
 		})
 	})
 };
