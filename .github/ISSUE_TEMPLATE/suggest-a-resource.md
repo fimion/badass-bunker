@@ -11,11 +11,14 @@ assignees: fimion
 
 Please fill out the following list of items and we'll review your submission!
 
-- Title:
-- Creator Name: 
-- Creator URL: 
-- Resource URL: 
+```markdown
+---
+title: Title of Homebrew Project
+creatorName: The name/tag of the Homebrew creator
+creatorUrl: URL for the creator
+resourceUrl: URL to the Homebrew content
 
-Description:
-
+---
 <!-- Fill out a description to display with the item here! let people know what it is about! -->
+
+```

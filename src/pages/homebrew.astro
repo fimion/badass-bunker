@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import HomebrewPreview from '../components/HomebrewPreview.astro';
+import Hero from '../components/Hero.astro';
+import Grid from '../components/Grid.astro';
+
+const resources = (await getCollection('homebrew')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout
+	title="Homebrew List | The Badass Bunker"
+	description="A list of community made Homebrew content for Bunkers and Badasses"
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero
+				title="Homebrew Resources"
+				tagline="A list of community made Homebrew content for Bunkers and Badasses"
+				align="start"
+			/>
+			<Grid variant="offset">
+				{
+					resources.map((resource) => (
+						<li>
+							<HombrewPreview resource={resource} />
+						</li>
+					))
+				}
+			</Grid>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>

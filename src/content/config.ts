@@ -11,4 +11,14 @@ export const collections = {
 			img_alt: z.string().optional(),
 		}),
 	}),
+	homebrew: defineCollection({
+		schema: z.object({
+			title: z.string(),
+			description: z.string(),
+			publishDate: z.coerce.date(),
+			creatorName: z.string(),
+			creatorUrl: z.string().url().optional(),
+			resourceUrl: z.string().url(),
+		})
+	})
 };
