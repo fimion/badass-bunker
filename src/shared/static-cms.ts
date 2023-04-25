@@ -63,7 +63,7 @@ CMS.init({
           },
           {
             label: "Image Alt text",
-            name: "img",
+            name: "img_alt",
             hint: "Descriptive text for the preview image.",
             widget:"string",
             required:false,
