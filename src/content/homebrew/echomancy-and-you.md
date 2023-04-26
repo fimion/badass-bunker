@@ -1,7 +1,7 @@
 ---
 title: ECHOmancy and You!
 description: Rules for installing Cybernetic implants on your B&B character.
-publishDate: 2023-04-25T22:27:52.663
+publishDate: 2023-02-23T22:00:46.000-05:00
 creatorName: MightyHeretic
 creatorUrl: pass
 resourceUrl: https://cdn.discordapp.com/attachments/854414991946940467/1078512223296700426/ECHOmancy_and_You_V1.0.pdf
