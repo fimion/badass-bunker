@@ -2,16 +2,28 @@ import CMS from "@staticcms/core";
 import React from "react";
 import "@staticcms/core/dist/main.css";
 
-const URLRegex = '^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$'
+const URLRegexPartial = 'https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*'
+
 const URLPattern: [string, string] = [
-    URLRegex,
+  `^${URLRegexPartial}$`,
   'Must be a URL.'
+]
+
+const URLOptionalPattern: [string, string] = [
+  `^(${URLRegexPartial}|null)$`,
+  'Must be a URL or \'null\'.'
+]
+
+const ColorPattern: [string, string] = [
+    "^(#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})|null)$",
+    "Must be a color."
 ]
 CMS.init({
   config: {
     backend: {
       name: "git-gateway",
     },
+    local_backend: import.meta.env.DEV,
     media_folder: "public/uploads",
     public_folder: "/uploads",
     site_url: "https://badass-bunker.netlify.app",
@@ -40,10 +52,11 @@ CMS.init({
           {
             label: "Creator URL",
             name: "creatorUrl",
-            hint: "Must be a valid URL for the creator.",
+            hint: "Must be a valid URL for the creator or \'pass\'.",
             widget:"string",
             required:false,
-            pattern: URLPattern,
+            default: 'pass',
+            pattern: URLOptionalPattern,
           },
           {
             label: "Resource URL",
@@ -56,17 +69,19 @@ CMS.init({
           {
             label: "Image URL",
             name: "img",
-            hint: "a url for a preview image.",
+            hint: "a url for a preview image or \'pass\'.",
             widget:"string",
+            default: 'pass',
             required:false,
-            pattern: URLPattern,
+            pattern: URLOptionalPattern,
           },
           {
             label: "Image Alt text",
             name: "img_alt",
             hint: "Descriptive text for the preview image.",
             widget:"string",
-            required:false,
+            required: false,
+            default: 'pass',
           },
           {
             label: "Color 1",
@@ -74,6 +89,7 @@ CMS.init({
             hint: 'Fallback gradient color 1',
             widget: 'color',
             required: false,
+            default: "#141925",
           },
           {
             label: "Color 2",
@@ -81,6 +97,7 @@ CMS.init({
             hint: 'Fallback gradient color 2',
             widget: 'color',
             required: false,
+            default: "#090b11"
           },
           { label: "Body", name: "body", widget: "markdown" },
         ],

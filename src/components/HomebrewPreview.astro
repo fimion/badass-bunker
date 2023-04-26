@@ -10,11 +10,17 @@ const { data, slug } = Astro.props.resource;
 const color1 = data.color1 || 'var(--gray-900)';
 const color2 = data.color2 || 'var(--gray-999)';
 const colors = `--color-1:${color1};--color-2:${color2}`;
+
+let img = data.img;
+if(img==='pass'){
+	img=null;
+}
+
 ---
 
 <a class="card" href={`/homebrew/${slug}`} style={colors}>
 	<span class="title">{data.title} by {data.creatorName}</span>
-	{data.img && <img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />}
+	{img && <img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />}
 </a>
 
 <style>

@@ -25,6 +25,9 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const img = entry.data.img !== 'pass'? entry.data.img : null;
+const creatorUrl = entry.data.creatorUrl !== 'pass' ? entry.data.creatorUrl : null;
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
@@ -35,7 +38,7 @@ const { Content } = await entry.render();
 					<a class="back-link" href="/homebrew/"><Icon icon="arrow-left" /> Homebrew</a>
 					<Hero title={entry.data.title} align="start">
 						<div class="details">
-							<p class="description">Created by {entry.data.creatorUrl?<a href={entry.data.creatorUrl}>{entry.data.creatorName}</a>:entry.data.creatorName}</p>
+							<p class="description">Created by {creatorUrl?<a href={entry.data.creatorUrl}>{entry.data.creatorName}</a>:entry.data.creatorName}</p>
 
 						</div>
 					</Hero>
@@ -43,7 +46,7 @@ const { Content } = await entry.render();
 			</header>
 			<main class="wrapper">
 				<div class="stack gap-10 content">
-					{entry.data.img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />}
+					{img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />}
 					<a href={entry.data.resourceUrl} class="">Go here for {entry.data.title}</a>
 					<p class="description">{entry.data.description}</p>
 					<div class="content">

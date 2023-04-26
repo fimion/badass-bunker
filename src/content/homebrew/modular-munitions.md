@@ -4,7 +4,10 @@ description: Bazillions of Guns, just like the old days. Roll buckets of dice
   for just 1 weapon.
 publishDate: 2023-04-16T23:50:00.000-04:00
 creatorName: Mr.Sandman
+creatorUrl: pass
 resourceUrl: https://docs.google.com/document/d/1TIvVg72KBl0XZRvGRvN9xMkwJXDQBFvz/edit?usp=sharing&ouid=100036136640067516559&rtpof=true&sd=true
+img: pass
+img_alt: pass
 color1: "#4a0d0d"
 color2: "#6e0394"
 ---
