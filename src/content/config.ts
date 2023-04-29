@@ -1,21 +1,11 @@
 import { defineCollection, z } from 'astro:content';
 
 
-const ZodColor = z.custom<`#${hexNumber}`>((val)=>{
+const ZodColor = z.custom<`#[0-9a-fA-F]`>((val)=>{
 	if(!val) return true;
 	return /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(val as string);
 })
 export const collections = {
-	work: defineCollection({
-		schema: z.object({
-			title: z.string(),
-			description: z.string(),
-			publishDate: z.coerce.date(),
-			tags: z.array(z.string()),
-			img: z.string(),
-			img_alt: z.string().optional(),
-		}),
-	}),
 	homebrew: defineCollection({
 		schema: z.object({
 			title: z.string(),

@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-
+import {Image} from "@astrojs/image/components";
 interface Props {
 	resource: CollectionEntry<'homebrew'>;
 }
@@ -20,7 +20,7 @@ if(img==='pass'){
 
 <a class="card" href={`/homebrew/${slug}`} style={colors}>
 	<span class="title">{data.title} by {data.creatorName}</span>
-	{img && <img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />}
+	{img && <Image src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />}
 </a>
 
 <style>
