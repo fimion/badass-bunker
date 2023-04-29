@@ -40,8 +40,6 @@ Put your global styles in here!
 All files in this folder will be bundled into the published site. Add images, fonts, etc here.
 
 
-Need to add a
-
 ## 🧞 Commands
 All commands are run from the root of the project, from a terminal:
 
