@@ -19,5 +19,19 @@ export const collections = {
 			color1: ZodColor,
 			color2: ZodColor,
 		})
+	}),
+	bmTool: defineCollection({
+		schema: z.object({
+			title: z.string(),
+			description: z.string(),
+			publishDate: z.coerce.date(),
+			creatorName: z.string(),
+			creatorUrl: z.union([z.literal("pass"), z.string().url().optional()]),
+			resourceUrl: z.string().url(),
+			img: z.union([z.literal("pass"), z.string().url().optional()]),
+			img_alt: z.string().or(z.literal("pass")),
+			color1: ZodColor,
+			color2: ZodColor,
+		})
 	})
 };

@@ -1,0 +1,178 @@
+---
+
+---
+<main class="badassitude-calc">
+  <h1>Tina's TOTALLY BADASS Calculator!!</h1>
+  <form action="#" method="get" id="badassitizer">
+    <label for="playerLevel">Player Level</label>
+    <select name="playerLevel" id="playerLevel">
+      <option value="3">1 - 6 (+3)</option>
+      <option value="5">7 - 12 (+5)</option>
+      <option value="8">13 - 18 (+8)</option>
+      <option value="12">19 - 24 (+12)</option>
+      <option value="15">25 - 30 (+15)</option>
+    </select>
+    <label for="numActions">Number of actions</label>
+    <select name="numActions" id="numActions">
+      <option value="0">None (WHO DOES THIS??). (+0)</option>
+      <option value="5">1-2 actions (+5)</option>
+      <option value="10">3-4 actions (+10)</option>
+      <option value="15">5+ actions (+15)</option>
+    </select>
+    <label for="numEnemies">Number of adjacent Enemies</label>
+    <select name="numEnemies" id="numEnemies">
+      <option value="0">Zilch. (+0)</option>
+      <option value="3">1 Enemy (+3)</option>
+      <option value="6">2 Enemies (+6)</option>
+      <option value="10">3+ Enemies (+10)</option>
+    </select>
+    <label for="terrain">
+      <input type="checkbox" name="terrain" id="terrain">
+      Difficult Terrain (+5)
+    </label>
+    <label for="numChecks">Number of Checks</label>
+    <select name="numChecks" id="numChecks">
+      <option value="0">Nada. (+0)</option>
+      <option value="3">1 Check (+3)</option>
+      <option value="5">2 Checks (+5)</option>
+      <option value="8">3+ Checks (+8)</option>
+    </select>
+    <label for="badassitude">Badassitude</label>
+    <select name="badassitude" id="badassitude">
+      <option value="0">Eh. Don't even let them try. (-0)</option>
+      <option value="-3">I mean, pretty neat. (-3)</option>
+      <option value="-5">Inhuman feat of beautiful murder. (-5)</option>
+      <option value="-10">The unlucky fool really needs this. (-10)</option>
+    </select>
+    <label for="assisting">Assisting players (+6/player)</label>
+    <input type="number" name="assisting" id="assisting" value="0">
+    <button>DO THEM MATHS!</button>
+  </form>
+</main>
+<dialog id="badassResults">
+  <form method="dialog">
+    <h2>THOSE SUCKERS NEED TO BEAT:</h2>
+    <output style="font-size: 5rem; text-align: center;" id="BADASSTOTAL" for="badassitizer"></output>
+    <button>GOT IT!</button>
+  </form>
+</dialog>
+<style>
+  @font-face {
+    font-family: "matt-b";
+    src: url("https://assets.codepen.io/729148/mattb.ttf") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  main.badassitude-calc,
+  dialog {
+    --c-tt-pink: #fc5dc5;
+    background-color: black;
+    color: var(--c-tt-pink);
+    font-family: matt-b, sans-serif;
+    font-size: 1.25rem;
+  }
+
+  dialog{
+    margin: auto;
+  }
+
+  h1 {
+    font-family: matt-b, sans-serif;
+    color: var(--c-tt-pink);
+    text-align: center;
+  }
+  main {
+    display: grid;
+    grid-template-columns: minmax(320px, 60vw);
+    place-content: center;
+  }
+
+  form {
+    width: 100%;
+    min-width: 320px;
+  }
+
+  form > * + * {
+    margin-block-start: 0.25rem;
+  }
+
+  input,
+  select,
+  button {
+    display: block;
+    width: calc(100% - 2rem);
+    color: inherit;
+    font-family: inherit;
+    font-size: 1rem;
+    padding-inline: 1rem;
+    padding-block: 0.25rem;
+    margin-inline: 0;
+    background-color: inherit;
+    border-color: var(--c-tt-pink);
+    border-style: dashed;
+    border-width: 3px;
+    border-radius: 0.3rem;
+  }
+  button {
+    margin-block-start: 1rem;
+    border-style: solid;
+    box-shadow: 0px 0px 10px 5px var(--c-tt-pink);
+  }
+  input[type="checkbox"] {
+    appearance: none;
+    display: inline-block;
+    min-width: 0.25rem;
+    max-width: 2ex;
+    aspect-ratio: 1;
+    padding: 0;
+    translate: 0 0.3rem;
+  }
+  input[type="checkbox"]:checked {
+    background-color: var(--c-tt-pink);
+    border-style: solid;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+  }
+
+  label {
+    display: block;
+    margin-block-start: 1rem;
+  }
+
+  output {
+    display: block;
+  }
+</style>
+<script type="module">
+  const badassCalc = document.querySelector("#badassitizer");
+
+  badassCalc.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    console.log(...formData.entries());
+    const playerLevel = Number(formData.get("playerLevel"));
+    const numActions = Number(formData.get("numActions"));
+    const numEnemies = Number(formData.get("numEnemies"));
+    const terrain = formData.get("terrain") ? 5 : 0;
+    const numChecks = Number(formData.get("numChecks"));
+    const badassitude = Number(formData.get("badassitude"));
+    const assisting = 6 * Number(formData.get("assisting"));
+
+    const total =
+        playerLevel +
+        numActions +
+        numEnemies +
+        terrain +
+        numChecks +
+        badassitude +
+        assisting;
+
+    const badassTotal = document.getElementById("BADASSTOTAL");
+    badassTotal.innerText = total;
+    document.getElementById("badassResults").showModal();
+  });
+</script>
